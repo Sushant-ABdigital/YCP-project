@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Creation of new campgrounds!</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-9">
+                <form class="form-horizontal" method="POST" action="/campgrounds/<%= foundedcampground._id %>/comment/new">
+                    <!-- <div class="form-group">
+                      <label for="cgname" class="col-sm-3 control-label">Author Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="cmt[author]" placeholder="Author Name">
+                      </div>
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <label for="cgname" class="col-sm-3 control-label">Comments</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="name" name="cmt[description]" placeholder="comment">
+                        </div>
+                      </div>
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-3 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Create new comment</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

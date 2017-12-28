@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="thumbnail">
+                    <img src="<%= foundedcampground.image %>" alt="Image">
+                    <div class="caption">
+                        <h3>
+                            <%= foundedcampground.name %> <small>campground created by: <%= foundedcampground.author.username %></small>
+                        </h3>
+                        <p>
+                            <%= foundedcampground.description %>
+                        </p>
+                        <p>
+                            <a href="/campgrounds/<%= foundedcampground._id %>/comment/new" class="btn btn-primary" role="button">Add New Comment</a>
+                            <% if(currentUser && foundedcampground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                <a href="/campgrounds/<%= foundedcampground._id %>/update" class="btn btn-success" role="button">Update</a>
+                                <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Comments</h4>
+            </div>
+            <% foundedcampground.comments.forEach(function(c){ %>
+            <div class="col-md-9" style="padding-bottom: 10px">
+                <div class="col-md-9">
+                    <span style="display: block"><strong><%= c.cmtauthor.username %></strong></span>
+                    <span style="display: block"><%= c.cmtdescription %></span>
+                    <span style="color:dimgray"> <small>10 days ago</small></span>
+                </div>
+                <div class="col-md-3">
+                    <% if(currentUser && c.cmtauthor.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                        <a href="/campgrounds/<%= foundedcampground._id %>/comments/<%= c._id %>/delete" style="display:inline" class="btn btn-danger">Delete</a>
+                        <a href="/campgrounds/<%= foundedcampground._id %>/comments/<%= c._id %>/update" style="display:inline" class="btn btn-warning">Update</a>
+                    <% } %>        
+                </div>
+            </div>
+                <% }) %>
+        </div>
+    </div>
+<% include ../partials/footer %>

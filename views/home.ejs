@@ -1,0 +1,23 @@
+<% include partials/header %>
+    <div class="container">
+        <% if(currentUser && currentUser.isAdmin == true){ %>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-left">You are an Admin.</h2>
+                </div>
+            </div>
+         <% } %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-left">Welcome to campgrounds providers.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aliquam incidunt magni!</p>
+                <a class="btn btn-primary" href="/campgrounds">Click here to go to campgrounds</a>
+            </div>
+        </div>
+    </div>
+<% include partials/footer %>

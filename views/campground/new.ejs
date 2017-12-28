@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Creation of new campgrounds!</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-9">
+                <form class="form-horizontal" method="POST" action="/campgrounds/new">
+                    <div class="form-group">
+                      <label for="cgname" class="col-sm-3 control-label">Campground Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="cg[name]" placeholder="Campground Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cgimg" class="col-sm-3 control-label">Campground image</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" name="cg[image]" placeholder="Campground image">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="cgdesc" class="col-sm-3 control-label">Campground Description</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="name" name="cg[desc]" placeholder="Campground Description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-3 col-sm-10">
+                        <button type="submit" class="btn btn-success">Create new campground</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+<% include ../partials/footer %>

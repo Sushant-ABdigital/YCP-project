@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to all handpicked Campgrounds</h1>
+            <p>Here You will find wide variety of campgrounds. Select the best that fascinate you and enjoy the holidays.</p>
+            <p><a class="btn btn-primary btn-lg" href="/campgrounds/new" role="button">Add new campgrounds!</a></p>
+            <form action="/campgrounds" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="" name="searchquery" placeholder="Search Campground">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <% if(noMatch !== undefined){%>
+                   <h3><%= noMatch %></h3> 
+                <% } %>
+            </div>
+            <% campground.forEach(function(campground){ %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                    <img src="<%= campground.image %>" alt="place holder image">
+                    <div class="caption">
+                        <h3><%= campground.name %></h3>
+                        <p><%= campground.description %></p>
+                        <p>
+                            <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin == true ){ %>
+                                <form action="/campgrounds/<%= campground._id %>/delete?_method=DELETE" method="POST" style="display:inline">
+                                    <button class="btn btn-danger" role="button">Delete</button>
+                                </form>
+                            <% } %>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary" role="button">Load More</a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+            <% });%>    
+        </div>
+    </div>
+<% include ../partials/footer %>
